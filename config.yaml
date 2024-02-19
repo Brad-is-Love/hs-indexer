@@ -1,0 +1,20 @@
+name: High Stakes
+networks:
+- id: 1666600000
+  start_block: 0
+  contracts:
+  - name: SweepStakesNFTs
+    address:
+    - 0xc71D7C069Ae96794c5d6d54ff04754D2832601c3
+    - 0x058DCD4FcB02d0cD2df9E8Be992bfB89998A6Bbd
+    - 0x3eCd6879485B1383bA9F45177f12276325DCdeA9
+    handler: ./src/EventHandlers.js
+    events:
+    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
+    - event: DrawWinner()
+    - event: Enter(uint256 indexed _tokenId, uint256 _amount)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+    - event: Unstake(uint256 indexed _tokenId, uint256 _amount)
+    - event: WinnerAssigned(uint256 winningTicket, uint256 indexed _winner, uint256 _amount)
+    - event: Withdraw(uint256 indexed _tokenId, uint256 _amount)

@@ -1,0 +1,406 @@
+[
+    {
+        "inputs": [
+            {
+                "name": "_sweepstakes",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "name": "_owner",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "name": "_stake",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "_validators",
+                "internalType": "address[]",
+                "type": "address[]"
+            }
+        ],
+        "stateMutability": "payable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "MoveCompleted",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "MoveStarted",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "indexed": false,
+                "name": "directive",
+                "internalType": "uint8",
+                "type": "uint8"
+            },
+            {
+                "indexed": false,
+                "name": "success",
+                "internalType": "bool",
+                "type": "bool"
+            }
+        ],
+        "name": "StakingPrecompileCalled",
+        "anonymous": false,
+        "type": "event"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "delegatedToValidator",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "epoch",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "extraFunds",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "initiateMoveEpoch",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "minDelegation",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "moving",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "inputs": [],
+        "name": "owner",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "pendingDelegation",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "inputs": [],
+        "name": "sweepstakes",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "validators",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [],
+        "name": "juicePrizePool",
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "enter",
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "_tokenId",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "addToToken",
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "autoCompound",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            },
+            {
+                "name": "_tokenId",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "unstake",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "inputs": [],
+        "name": "collect",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_user",
+                "internalType": "address",
+                "type": "address"
+            },
+            {
+                "name": "_amount",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "payUser",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_newValidators",
+                "internalType": "address[]",
+                "type": "address[]"
+            }
+        ],
+        "name": "rebalanceStart",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [],
+        "name": "rebalanceEnd",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_sweepstakes",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "setSweepstakes",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_owner",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "setOwner",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_minDelegation",
+                "internalType": "uint256",
+                "type": "uint256"
+            }
+        ],
+        "name": "setMinDelegation",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [],
+        "inputs": [
+            {
+                "name": "_validators",
+                "internalType": "address[]",
+                "type": "address[]"
+            }
+        ],
+        "name": "setValidators",
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "outputs": [
+            {
+                "name": "",
+                "internalType": "bool",
+                "type": "bool"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "_validator",
+                "internalType": "address",
+                "type": "address"
+            }
+        ],
+        "name": "isValidator",
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

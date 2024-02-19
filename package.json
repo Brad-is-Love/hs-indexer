@@ -1,0 +1,17 @@
+{
+  "name": "High Stakes",
+  "version": "0.1.0",
+  "scripts": {
+    "codegen": "envio codegen",
+    "dev": "envio dev",
+    "test": "pnpm mocha",
+    "start": "node generated/src/Index.bs.js"
+  },
+  "devDependencies": {
+    "mocha": "10.2.0"
+  },
+  "dependencies": {
+    "envio": "0.0.29",
+    "ethers": "6.8.0"
+  }
+}
