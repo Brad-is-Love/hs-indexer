@@ -1,58 +1,16 @@
-type EventsSummary {
+type Token {
   id: ID!
-  sweepStakesNFTs_Approval: [SweepStakesNFTs_Approval!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_ApprovalCount: BigInt!
-  sweepStakesNFTs_ApprovalForAll: [SweepStakesNFTs_ApprovalForAll!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_ApprovalForAllCount: BigInt!
-  sweepStakesNFTs_DrawWinner: [SweepStakesNFTs_DrawWinner!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_DrawWinnerCount: BigInt!
-  sweepStakesNFTs_Enter: [SweepStakesNFTs_Enter!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_EnterCount: BigInt!
-  sweepStakesNFTs_Transfer: [SweepStakesNFTs_Transfer!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_TransferCount: BigInt!
-  sweepStakesNFTs_Unstake: [SweepStakesNFTs_Unstake!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_UnstakeCount: BigInt!
-  sweepStakesNFTs_WinnerAssigned: [SweepStakesNFTs_WinnerAssigned!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_WinnerAssignedCount: BigInt!
-  sweepStakesNFTs_Withdraw: [SweepStakesNFTs_Withdraw!]! @derivedFrom(field: "eventsSummary")
-  sweepStakesNFTs_WithdrawCount: BigInt!
-}
-
-type SweepStakesNFTs_Approval {
-  id: ID!
-  owner: String!
-  approved: String!
-  tokenId: BigInt!
-  eventsSummary: String!
-}
-
-type SweepStakesNFTs_ApprovalForAll {
-  id: ID!
-  owner: String!
-  operator: String!
-  approved: Boolean!
-  eventsSummary: String!
-}
-
-type SweepStakesNFTs_DrawWinner {
-  id: ID!
-  eventsSummary: String!
+  userAddress: String!
+  totalStakes: BigInt!
+  totalPrizes: BigInt!
+  balance: BigInt!
+  prizes: [SweepStakesNFTs_WinnerAssigned!]! @derivedFrom(field: "_winner")
 }
 
 type SweepStakesNFTs_Enter {
   id: ID!
   _tokenId: BigInt!
   _amount: BigInt!
-  eventsSummary: String!
-}
-
-type Participant {
-  id: ID!
-  address: String!
-  totalStakes: BigInt!
-  totalPrizes: BigInt!
-  balance: BigInt!
-  prizes: [SweepStakesNFTs_WinnerAssigned!]! @derivedFrom(field: "_winner")
 }
 
 type SweepStakesNFTs_Transfer {
@@ -60,14 +18,12 @@ type SweepStakesNFTs_Transfer {
   from: String!
   to: String!
   tokenId: BigInt!
-  eventsSummary: String!
 }
 
 type SweepStakesNFTs_Unstake {
   id: ID!
   _tokenId: BigInt!
   _amount: BigInt!
-  eventsSummary: String!
 }
 
 type SweepStakesNFTs_WinnerAssigned {
@@ -75,13 +31,6 @@ type SweepStakesNFTs_WinnerAssigned {
   winningTicket: BigInt!
   _winner: BigInt!
   _amount: BigInt!
-  participant: Participant
-  eventsSummary: String!
-}
-
-type SweepStakesNFTs_Withdraw {
-  id: ID!
-  _tokenId: BigInt!
-  _amount: BigInt!
-  eventsSummary: String!
+  token: Token!
+  winnerBalance: BigInt!
 }

@@ -10,11 +10,16 @@ networks:
     - 0x3eCd6879485B1383bA9F45177f12276325DCdeA9
     handler: ./src/EventHandlers.js
     events:
-    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
-    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
-    - event: DrawWinner()
     - event: Enter(uint256 indexed _tokenId, uint256 _amount)
+      requiredEntities:
+        - name: Token
     - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+      requiredEntities:
+        - name: Token
     - event: Unstake(uint256 indexed _tokenId, uint256 _amount)
+      requiredEntities:
+        - name: Token
     - event: WinnerAssigned(uint256 winningTicket, uint256 indexed _winner, uint256 _amount)
-    - event: Withdraw(uint256 indexed _tokenId, uint256 _amount)
+      requiredEntities:
+        - name: Token
+  
