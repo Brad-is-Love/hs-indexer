@@ -162,6 +162,7 @@ SweepStakesNFTsContract.WinnerAssigned.handler((event, context) => {
     _winner: event.params._winner,
     _amount: event.params._amount,
     token: tokenId,
+    timestamp: event.blockTimestamp,
     winnerAddress: tokenEntity.userAddress,
     winnerBalance: tokenEntity.balance,
     totalBalance: contractTotals.balance,

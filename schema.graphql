@@ -38,6 +38,7 @@ type SweepStakesNFTs_WinnerAssigned {
   _winner: BigInt!
   _amount: BigInt!
   token: Token!
+  timestamp: Int!
   winnerAddress: String!
   winnerBalance: BigInt!
   totalBalance: BigInt!
