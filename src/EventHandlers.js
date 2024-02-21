@@ -45,11 +45,15 @@ SweepStakesNFTsContract.Transfer.handler((event, context) => {
 SweepStakesNFTsContract.Enter.loader((event, context) => {
   const tokenId = event.params._tokenId.toString();
   context.Token.load(tokenId);
+  const contractName = 'SweepStakes'
+  context.ContractTotals.load(contractName);
 });
 
 SweepStakesNFTsContract.Enter.handler((event, context) => {
   const tokenId = event.params._tokenId.toString();
   const tokenEntity = context.Token.get(tokenId);
+  const contractName = 'SweepStakes'
+  const contractTotals = context.ContractTotals.get(contractName);
 
   const sweepStakesNFTs_EnterEntity = {
     id: event.transactionHash + event.logIndex.toString(),
@@ -75,6 +79,20 @@ SweepStakesNFTsContract.Enter.handler((event, context) => {
     });
   }
 
+  if (contractTotals != undefined) {
+    context.ContractTotals.set({
+      id: contractName,
+      totalPrizes: contractTotals.totalPrizes,
+      balance: contractTotals.balance + event.params._amount,
+    });
+  } else {
+    context.ContractTotals.set({
+      id: contractName,
+      totalPrizes: BigInt(0),
+      balance: event.params._amount,
+    });
+  }
+
   context.SweepStakesNFTs_Enter.set(sweepStakesNFTs_EnterEntity);
 });
 
@@ -82,11 +100,15 @@ SweepStakesNFTsContract.Enter.handler((event, context) => {
 SweepStakesNFTsContract.Unstake.loader((event, context) => {
   const tokenId = event.params._tokenId.toString();
   context.Token.load(tokenId);
+  const contractName = 'SweepStakes'
+  context.ContractTotals.load(contractName);
 });
 
 SweepStakesNFTsContract.Unstake.handler((event, context) => {
   const tokenId = event.params._tokenId.toString();
   const tokenEntity = context.Token.get(tokenId);
+  const contractName = 'SweepStakes'
+  const contractTotals = context.ContractTotals.get(contractName);
 
   const sweepStakesNFTs_UnstakeEntity = {
     id: event.transactionHash + event.logIndex.toString(),
@@ -112,17 +134,27 @@ SweepStakesNFTsContract.Unstake.handler((event, context) => {
     });
   }
 
+  context.ContractTotals.set({
+    id: contractName,
+    totalPrizes: contractTotals.totalPrizes,
+    balance: contractTotals.balance - event.params._amount,
+  });
+
   context.SweepStakesNFTs_Unstake.set(sweepStakesNFTs_UnstakeEntity);
 });
 
 SweepStakesNFTsContract.WinnerAssigned.loader((event, context) => {
   const tokenId = event.params._winner.toString();
   context.Token.load(tokenId);
+  const contractName = 'SweepStakes'
+  context.ContractTotals.load(contractName);
 });
 
 SweepStakesNFTsContract.WinnerAssigned.handler((event, context) => {
   const tokenId = event.params._winner.toString();
   const tokenEntity = context.Token.get(tokenId);
+  const contractName = 'SweepStakes'
+  const contractTotals = context.ContractTotals.get(contractName);
 
   const sweepStakesNFTs_WinnerAssignedEntity = {
     id: event.transactionHash + event.logIndex.toString(),
@@ -130,7 +162,9 @@ SweepStakesNFTsContract.WinnerAssigned.handler((event, context) => {
     _winner: event.params._winner,
     _amount: event.params._amount,
     token: tokenId,
+    winnerAddress: tokenEntity.userAddress,
     winnerBalance: tokenEntity.balance,
+    totalBalance: contractTotals.balance,
   };
 
   if (tokenEntity != undefined) {
@@ -150,6 +184,12 @@ SweepStakesNFTsContract.WinnerAssigned.handler((event, context) => {
       balance: event.params._amount,
     });
   }
+
+  context.ContractTotals.set({
+    id: contractName,
+    totalPrizes: contractTotals.totalPrizes + event.params._amount,
+    balance: contractTotals.balance + event.params._amount,
+  });
 
 
   context.SweepStakesNFTs_WinnerAssigned.set(

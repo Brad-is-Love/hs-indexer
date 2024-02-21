@@ -1,3 +1,9 @@
+type ContractTotals {
+  id: ID!
+  totalPrizes: BigInt!
+  balance: BigInt!
+}
+
 type Token {
   id: ID!
   userAddress: String!
@@ -32,5 +38,7 @@ type SweepStakesNFTs_WinnerAssigned {
   _winner: BigInt!
   _amount: BigInt!
   token: Token!
+  winnerAddress: String!
   winnerBalance: BigInt!
+  totalBalance: BigInt!
 }
