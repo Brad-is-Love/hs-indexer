@@ -11,6 +11,32 @@ networks:
     handler: ./src/EventHandlers.js
     events:
     - event: Enter(uint256 indexed _tokenId, uint256 _amount)
+      requiredEntities:
+        - name: "Token"
+          labels:
+            - "token"
+        - name: "User"
+        - name: "ContractTotals"
     - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+      requiredEntities:
+        - name: "Token"
+          labels:
+            - "token"
+        - name: "User"
+        - name: "ContractTotals"
     - event: Unstake(uint256 indexed _tokenId, uint256 _amount)
+      requiredEntities:
+        - name: "Token"
+          labels:
+            - "token"
+        - name: "User"
+        - name: "ContractTotals"
     - event: WinnerAssigned(uint256 winningTicket, uint256 indexed _winner, uint256 _amount)
+      requiredEntities:
+        - name: "Token"
+          labels:
+            - "token"
+        - name: "User"
+        - name: "ContractTotals"
+
+
