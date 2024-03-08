@@ -35,7 +35,7 @@ type SweepStakesNFTs_Unstake {
 type SweepStakesNFTs_WinnerAssigned {
   id: ID!
   winningTicket: BigInt!
-  _winner: BigInt!
+  _winner: Token!
   _amount: BigInt!
   token: Token!
   timestamp: Int!
