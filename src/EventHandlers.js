@@ -25,7 +25,7 @@ SweepStakesNFTsContract.Transfer.handler((event, context) => {
     context.Token.set({
       id: tokenId,
       userAddress: newOwner,
-      totalStakes: tokenEntity.totalStakes ?? BigInt(0),
+      totalStakes: tokenEntity.totalStakes ?? BigInt(0), // NOTE, it is logically impossible for `tokenEntity.totalStakes` to be undefinedlStakes - default value for prudance.
       totalPrizes: tokenEntity.totalPrizes ?? BigInt(0),
       balance: tokenEntity.balance ?? BigInt(0),
     });
@@ -159,7 +159,7 @@ SweepStakesNFTsContract.WinnerAssigned.handler((event, context) => {
   const sweepStakesNFTs_WinnerAssignedEntity = {
     id: event.transactionHash + event.logIndex.toString(),
     winningTicket: event.params.winningTicket,
-    _winner: event.params._winner,
+    _winner: event.params._winner.toString(),
     _amount: event.params._amount,
     token: tokenId,
     timestamp: event.blockTimestamp,
