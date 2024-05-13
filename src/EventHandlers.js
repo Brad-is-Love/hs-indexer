@@ -1,12 +1,12 @@
 /*
  *Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features*
 
- Adding comment to action new deployment
+ Adding comment to action new
  */
 
 let { SweepStakesNFTsContract } = require("../generated/src/Handlers.bs.js");
 
-SweepStakesNFTsContract.Transfer.loader((event, context) => {
+SweepStakesNFTsContract.Transfer.loader((event, cßntext) => {
   const tokenId = event.params.tokenId.toString();
   context.Token.tokenLoad(tokenId);
   context.User.load(event.params.to);
