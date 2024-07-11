@@ -1,7 +1,7 @@
 /*
  *Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features*
 
- Adding comment to action new
+ Adding comment to action new deployment
  */
 
 let { SweepStakesNFTsContract } = require("../generated/src/Handlers.bs.js");
