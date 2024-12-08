@@ -1,4 +1,5 @@
-name: High Stakes
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
 networks:
 - id: 1666600000
   start_block: 0
@@ -6,37 +7,12 @@ networks:
   - name: SweepStakesNFTs
     address:
     - 0xc71D7C069Ae96794c5d6d54ff04754D2832601c3
-    - 0x058DCD4FcB02d0cD2df9E8Be992bfB89998A6Bbd
-    - 0x3eCd6879485B1383bA9F45177f12276325DCdeA9
-    handler: ./src/EventHandlers.js
+    handler: src/EventHandlers.ts
     events:
     - event: Enter(uint256 indexed _tokenId, uint256 _amount)
-      # requiredEntities:
-      #   - name: "Token"
-      #     labels:
-      #       - "token"
-      #   - name: "User"
-      #   - name: "ContractTotals"
     - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
-      # requiredEntities:
-      #   - name: "Token"
-      #     labels:
-      #       - "token"
-      #   - name: "User"
-      #   - name: "ContractTotals"
     - event: Unstake(uint256 indexed _tokenId, uint256 _amount)
-      # requiredEntities:
-      #   - name: "Token"
-      #     labels:
-      #       - "token"
-      #   - name: "User"
-      #   - name: "ContractTotals"
     - event: WinnerAssigned(uint256 winningTicket, uint256 indexed _winner, uint256 _amount)
-      # requiredEntities:
-      #   - name: "Token"
-      #     labels:
-      #       - "token"
-      #   - name: "User"
-      #   - name: "ContractTotals"
-
+    - event: Withdraw(uint256 indexed _tokenId, uint256 _amount)
+rollback_on_reorg: false
 

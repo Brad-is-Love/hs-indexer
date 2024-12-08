@@ -6,21 +6,14 @@ type ContractTotals {
 
 type User {
   id: ID!
-  prizes: [SweepStakesNFTs_WinnerAssigned!]! @derivedFrom(field: "winnerAddress")
-  totalPrizes: BigInt!
-  totalStakes: BigInt!
-  balance: BigInt!
   tokens: [Token!]! @derivedFrom(field: "userAddress")
+  balance: BigInt!
 }
 
 type Token {
   id: ID!
   userAddress: String!
-  user: User!
-  totalStakes: BigInt!
-  totalPrizes: BigInt!
   balance: BigInt!
-  prizes: [SweepStakesNFTs_WinnerAssigned!]! @derivedFrom(field: "token")
 }
 
 type SweepStakesNFTs_Enter {
@@ -46,12 +39,17 @@ type SweepStakesNFTs_Unstake {
 
 type SweepStakesNFTs_WinnerAssigned {
   id: ID!
-  winningTicket: BigInt!
   _winner: BigInt!
   _amount: BigInt!
-  token: Token!
   timestamp: Int!
   winnerAddress: String!
   winnerBalance: BigInt!
   totalBalance: BigInt!
 }
+
+type SweepStakesNFTs_Withdraw {
+  id: ID!
+  _tokenId: BigInt!
+  _amount: BigInt!
+}
+

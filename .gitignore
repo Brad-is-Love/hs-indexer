@@ -31,4 +31,7 @@ cache
 generated
 logs
 *.bs.js
+*.bs.mjs
+*.gen.ts
 build
+.env
