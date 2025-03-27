@@ -2,6 +2,8 @@
 name: envio-indexer
 networks:
 - id: 1666600000
+  rpc_config:
+    url: "https://api.harmony.one"
   start_block: 0
   contracts:
   - name: SweepStakesNFTs
