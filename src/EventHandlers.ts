@@ -5,6 +5,7 @@ import {
   User,
   Token,
   SweepStakesNFTs_WinnerAssigned,
+  type SweepStakesNFTs_Enter,
 } from "generated";
 
 const initialContractTotals: ContractTotals = {
@@ -134,6 +135,16 @@ SweepStakesNFTs.Enter.handler(async ({ event, context }) => {
     };
     context.Token.set(tokenObject);
   }
+
+  let userAddress = token !== undefined ? token.userAddress : event.srcAddress.toString();
+
+  let enterObject: SweepStakesNFTs_Enter = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    _tokenId: event.params._tokenId,
+    _amount: event.params._amount,
+    userAddress: userAddress,
+  };
+  context.SweepStakesNFTs_Enter.set(enterObject);
 });
 
 SweepStakesNFTs.Unstake.handler(async ({ event, context }) => {

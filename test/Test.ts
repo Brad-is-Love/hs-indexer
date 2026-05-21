@@ -1,7 +1,7 @@
 import assert from "assert";
 import { 
   TestHelpers,
-  SweepStakesNFTs_Enter
+  type SweepStakesNFTs_Enter
 } from "generated";
 const { MockDb, SweepStakesNFTs } = TestHelpers;
 
@@ -29,6 +29,7 @@ describe("SweepStakesNFTs contract Enter event tests", () => {
       id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
       _tokenId: event.params._tokenId,
       _amount: event.params._amount,
+      userAddress: event.srcAddress.toString(),
     };
     // Asserting that the entity in the mock database is the same as the expected entity
     assert.deepEqual(actualSweepStakesNFTsEnter, expectedSweepStakesNFTsEnter, "Actual SweepStakesNFTsEnter should be the same as the expectedSweepStakesNFTsEnter");
