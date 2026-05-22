@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2020", //required for use with BigInt types
-    "lib": [
-      "es2020"
-    ],
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "allowJs": true,
     "checkJs": false,
     "outDir": "build",
@@ -11,11 +10,14 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "module": "CommonJS"
+    "skipLibCheck": true
   },
   "include": [
     "src",
-    "test"
-  ]
+    "test",
+    "envio-env.d.ts"
+  ],
+  "ts-node": {
+    "esm": true
+  }
 }
