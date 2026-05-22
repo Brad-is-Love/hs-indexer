@@ -1,12 +1,11 @@
-
-import {
-  SweepStakesNFTs,
+import { indexer } from "envio";
+import type {
   ContractTotals,
   User,
   Token,
   SweepStakesNFTs_WinnerAssigned,
-  type SweepStakesNFTs_Enter,
-} from "generated";
+  SweepStakesNFTs_Enter,
+} from "envio";
 
 const initialContractTotals: ContractTotals = {
   id: "1",
@@ -66,7 +65,7 @@ const initialBalances = [
   "0",
 ];
 
-SweepStakesNFTs.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent({ contract: "SweepStakesNFTs", event: "Transfer" }, async ({ event, context }) => {
   let oldUser = await context.User.get(event.params.from.toString());
   let newUser = await context.User.get(event.params.to.toString());
   let token = await context.Token.get(event.params.tokenId.toString());
@@ -116,7 +115,7 @@ SweepStakesNFTs.Transfer.handler(async ({ event, context }) => {
   }
 });
 
-SweepStakesNFTs.Enter.handler(async ({ event, context }) => {
+indexer.onEvent({ contract: "SweepStakesNFTs", event: "Enter" }, async ({ event, context }) => {
   let contractTotals = await context.ContractTotals.get("1");
   if (contractTotals !== undefined) {
     let contractObject: ContractTotals = {
@@ -147,7 +146,7 @@ SweepStakesNFTs.Enter.handler(async ({ event, context }) => {
   context.SweepStakesNFTs_Enter.set(enterObject);
 });
 
-SweepStakesNFTs.Unstake.handler(async ({ event, context }) => {
+indexer.onEvent({ contract: "SweepStakesNFTs", event: "Unstake" }, async ({ event, context }) => {
   let contractTotals = await context.ContractTotals.get("1");
   if (contractTotals !== undefined) {
     let contractObject: ContractTotals = {
@@ -168,17 +167,12 @@ SweepStakesNFTs.Unstake.handler(async ({ event, context }) => {
   }
 });
 
-SweepStakesNFTs.WinnerAssigned.handlerWithLoader({
-  loader: async ({ event, context }) => {
+indexer.onEvent({ contract: "SweepStakesNFTs", event: "WinnerAssigned" }, async ({ event, context }) => {
     const token = await context.Token.get(event.params._winner.toString());
-    if (token === undefined) {
-      return { token: undefined, tokensOfUser: [] };
+    let tokensOfUser: Token[] = [];
+    if (token !== undefined) {
+      tokensOfUser = await context.Token.getWhere({ userAddress: { _eq: token.userAddress } });
     }
-    const tokensOfUser = await context.Token.getWhere.userAddress.eq(token.userAddress);
-    return { token, tokensOfUser };
-  },
-  handler: async ({ event, context, loaderReturn }) => {
-    const { token, tokensOfUser } = loaderReturn;
 
     let winningToken = token
     let winnerAddress = "Unknown";
@@ -219,5 +213,4 @@ SweepStakesNFTs.WinnerAssigned.handlerWithLoader({
       totalBalance: totalBalance,
     };
     context.SweepStakesNFTs_WinnerAssigned.set(winnerAssignedObject);
-  },
 });

@@ -1,37 +1,49 @@
 import assert from "assert";
 import { 
+  createTestIndexer,
   TestHelpers,
   type SweepStakesNFTs_Enter
-} from "generated";
-const { MockDb, SweepStakesNFTs } = TestHelpers;
+} from "envio";
+import "../src/EventHandlers.js";
 
 describe("SweepStakesNFTs contract Enter event tests", () => {
-  // Create mock db
-  const mockDb = MockDb.createMockDb();
-
-  // Creating mock for SweepStakesNFTs contract Enter event
-  const event = SweepStakesNFTs.Enter.createMockEvent({/* It mocks event fields with default values. You can overwrite them if you need */});
-
   it("SweepStakesNFTs_Enter is created correctly", async () => {
-    // Processing the event
-    const mockDbUpdated = await SweepStakesNFTs.Enter.processEvent({
-      event,
-      mockDb,
+    const indexer = createTestIndexer();
+
+    const _tokenId = 123n;
+    const _amount = 456n;
+
+    // Simulate event and process it
+    await indexer.process({
+      chains: {
+        1666600000: {
+          startBlock: 0,
+          endBlock: 1,
+          simulate: [
+            {
+              contract: "SweepStakesNFTs",
+              event: "Enter",
+              params: {
+                _tokenId,
+                _amount,
+              },
+              srcAddress: "0xc71D7C069Ae96794c5d6d54ff04754D2832601c3",
+            },
+          ],
+        },
+      },
     });
 
-    // Getting the actual entity from the mock database
-    let actualSweepStakesNFTsEnter = mockDbUpdated.entities.SweepStakesNFTs_Enter.get(
-      `${event.chainId}_${event.block.number}_${event.logIndex}`
-    );
-
-    // Creating the expected entity
     const expectedSweepStakesNFTsEnter: SweepStakesNFTs_Enter = {
-      id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-      _tokenId: event.params._tokenId,
-      _amount: event.params._amount,
-      userAddress: event.srcAddress.toString(),
+      id: "1666600000_0_0",
+      _tokenId,
+      _amount,
+      userAddress: "0xc71D7C069Ae96794c5d6d54ff04754D2832601c3",
     };
-    // Asserting that the entity in the mock database is the same as the expected entity
+
+    let allSweepStakesNFTsEnter = await indexer.SweepStakesNFTs_Enter.getAll();
+    let actualSweepStakesNFTsEnter = allSweepStakesNFTsEnter[0];
+
     assert.deepEqual(actualSweepStakesNFTsEnter, expectedSweepStakesNFTsEnter, "Actual SweepStakesNFTsEnter should be the same as the expectedSweepStakesNFTsEnter");
   });
 });

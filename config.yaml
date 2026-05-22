@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: envio-indexer
-networks:
+chains:
 - id: 1666600000
-  rpc_config:
+  rpc:
     url: "https://api.harmony.one"
   start_block: 0
   contracts:
