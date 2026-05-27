@@ -14,7 +14,7 @@
   "devDependencies": {
     "@types/chai": "^4.3.11",
     "@types/mocha": "10.0.6",
-    "@types/node": "20.8.8",
+    "@types/node": "^22.0.0",
     "chai": "4.3.10",
     "mocha": "11.7.6",
     "ts-mocha": "^11.1.0",
@@ -23,5 +23,8 @@
   },
   "dependencies": {
     "envio": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

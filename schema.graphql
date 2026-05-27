@@ -11,7 +11,7 @@ type User {
 
 type Token {
   id: ID!
-  userAddress: String!
+  userAddress: String! @index
   balance: BigInt!
 }
 

@@ -4,7 +4,7 @@ chains:
 - id: 1666600000
   rpc:
     url: "https://api.harmony.one"
-  start_block: 0
+  start_block: 58914957
   contracts:
   - name: SweepStakesNFTs
     address:
