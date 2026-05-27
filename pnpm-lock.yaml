@@ -11,6 +11,10 @@ importers:
       envio:
         specifier: ^3.0.0
         version: 3.0.2(react-dom@19.2.6)(typescript@5.2.2)
+    optionalDependencies:
+      generated:
+        specifier: ./generated
+        version: link:generated
     devDependencies:
       '@types/chai':
         specifier: ^4.3.11
@@ -50,7 +54,7 @@ importers:
         version: 0.2.0
       '@rescript/react':
         specifier: 0.12.1
-        version: 0.12.1(react-dom@18.3.1)(react@18.2.0)
+        version: 0.12.1(react-dom@19.2.6)(react@18.2.0)
       bignumber.js:
         specifier: 9.1.2
         version: 9.1.2
@@ -740,14 +744,14 @@ packages:
     dev: true
     optional: true
 
-  /@rescript/react@0.12.1(react-dom@18.3.1)(react@18.2.0):
+  /@rescript/react@0.12.1(react-dom@19.2.6)(react@18.2.0):
     resolution: {integrity: sha512-ZD7nhDr5FZgLYqRH9s4CNM+LRz/3IMuTb+LH12fd2Akk0xYkYUP+DZveB2VQUC2UohJnTf/c8yPSNsiFihVCCg==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
       react: 18.2.0
-      react-dom: 18.3.1(react@18.2.0)
+      react-dom: 19.2.6(react@18.2.0)
     dev: false
 
   /@rescript/react@0.14.1(react-dom@19.2.6)(react@19.2.5):
@@ -2693,14 +2697,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /react-dom@18.3.1(react@18.2.0):
-    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
+  /react-dom@19.2.6(react@18.2.0):
+    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
     peerDependencies:
-      react: ^18.3.1
+      react: ^19.2.6
     dependencies:
-      loose-envify: 1.4.0
       react: 18.2.0
-      scheduler: 0.23.2
+      scheduler: 0.27.0
     dev: false
 
   /react-dom@19.2.6(react@19.2.5):
@@ -2863,12 +2866,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: false
-
-  /scheduler@0.23.2:
-    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
-    dependencies:
-      loose-envify: 1.4.0
     dev: false
 
   /scheduler@0.27.0:
