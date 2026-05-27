@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "clean": "tsc --clean",
-    "build": "tsc --build",
+    "build": "envio codegen && tsc --build",
     "watch": "tsc --watch",
     "test": "node --import tsx/esm node_modules/mocha/bin/mocha.js test/**/*.ts",
     "codegen": "envio codegen",
