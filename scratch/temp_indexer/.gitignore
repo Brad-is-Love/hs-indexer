@@ -24,13 +24,11 @@ lib/*
 .vscode
 .merlin
 .bsb.lock
-/node_modules/
+node_modules/
+build/
 benchmarks/
 artifacts
 cache
-logs
 *.bs.js
-*.bs.mjs
-*.gen.ts
-build
+generated
 .env
