@@ -28,6 +28,7 @@ lib/*
 benchmarks/
 artifacts
 cache
+generated
 logs
 *.bs.js
 *.bs.mjs
