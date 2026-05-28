@@ -9,7 +9,7 @@
     "test": "node --import tsx/esm node_modules/mocha/bin/mocha.js test/**/*.ts",
     "codegen": "envio codegen",
     "dev": "envio dev",
-    "start": "ts-node generated/src/Index.bs.js"
+    "start": "envio codegen && ts-node generated/src/Index.bs.js"
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",

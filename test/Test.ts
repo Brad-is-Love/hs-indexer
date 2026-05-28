@@ -17,8 +17,8 @@ describe("SweepStakesNFTs contract Enter event tests", () => {
     await indexer.process({
       chains: {
         1666600000: {
-          startBlock: 0,
-          endBlock: 1,
+          startBlock: 58914957,
+          endBlock: 58914958,
           simulate: [
             {
               contract: "SweepStakesNFTs",
@@ -35,7 +35,7 @@ describe("SweepStakesNFTs contract Enter event tests", () => {
     });
 
     const expectedSweepStakesNFTsEnter: SweepStakesNFTs_Enter = {
-      id: "1666600000_0_0",
+      id: "1666600000_58914957_0",
       _tokenId,
       _amount,
       userAddress: "0xc71D7C069Ae96794c5d6d54ff04754D2832601c3",
